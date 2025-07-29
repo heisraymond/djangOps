@@ -20,5 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # We are including all urls from my 
+    # app in our project folder
     path("", include('crm.urls')),
 ]
