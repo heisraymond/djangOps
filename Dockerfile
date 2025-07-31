@@ -1,7 +1,9 @@
-FROM python:3.14
+FROM python:3.13
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONBUFFERED=1
+ENV PYTHONPATH=/app
+
 
 WORKDIR /app/
 
@@ -14,4 +16,6 @@ COPY . /app/
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "project.wsgi.application", "--workers=3"]
+RUN chmod +x ./entrypoint.sh
+
+ENTRYPOINT [ "./entrypoint.sh" ]
